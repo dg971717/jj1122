@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리반 학급 공유 홈페이지</title>
+    <!-- Tailwind CSS CDN 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 기본 글꼴 설정 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind: bg-slate-50 */
+        }
+        /* 스크롤 시 부드러운 효과 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-mint': '#10b981', /* Emerald 500 */
+                        'secondary-green': '#059669', /* Emerald 600 */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 1. 헤더 및 네비게이션 영역 -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- 로고/제목 -->
+                <a href="#" class="flex-shrink-0">
+                    <span class="text-2xl font-extrabold text-primary-mint">
+                        ✨ [학년]반 공유 공간
+                    </span>
+                </a>
+                
+                <!-- 네비게이션 메뉴 (데스크톱) -->
+                <nav class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#notice" class="text-gray-600 hover:text-secondary-green px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            공지사항
+                        </a>
+                        <a href="#gallery" class="text-gray-600 hover:text-secondary-green px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            활동 사진
+                        </a>
+                        <a href="#resource" class="text-gray-600 hover:text-secondary-green px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            학습 자료
+                        </a>
+                        <a href="#board" class="bg-primary-mint text-white hover:bg-secondary-green px-3 py-2 rounded-md text-sm font-medium shadow-md transition duration-150 ease-in-out">
+                            자유 게시판
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- 모바일 메뉴 버튼 (미구현, 디자인 목적) -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-secondary-green focus:outline-none p-2 rounded-md">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><!-- Menu icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. 메인 콘텐츠 영역 -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        
+        <!-- 환영 배너 섹션 -->
+        <div class="px-4 py-8 sm:p-8 bg-gradient-to-r from-primary-mint to-teal-500 rounded-xl shadow-xl mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                "함께 성장하는 우리!"
+            </h2>
+            <p class="text-white text-opacity-90 text-lg">
+                여기는 우리 반만의 특별한 온라인 공간입니다. 공지, 사진, 자료를 한눈에 확인하세요.
+            </p>
+        </div>
+
+        <!-- 주요 콘텐츠 그리드 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 sm:px-0">
+            
+            <!-- 2-1. 공지사항 섹션 (좌측 상단) -->
+            <section id="notice" class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary-mint">
+                <h2 class="flex items-center text-2xl font-bold mb-4 text-gray-800">
+                    <!-- Icon: Megaphone -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2 text-primary-mint"><path d="m3 11 18-5v2L3 13v-2z"/><path d="M11.6 16.8a2.5 2.5 0 0 1-.7-1.8V9.8c0-.7-.4-1.2-1-1.2h-3c-.6 0-1 .5-1 1.2v5.2c0 .7.4 1.2 1 1.2h3c.6 0 1-.5 1-1.2z"/></svg>
+                    필수 공지사항
+                </h2>
+                <ul class="space-y-3">
+                    <li class="p-3 bg-red-50 text-red-700 border border-red-200 rounded-lg font-semibold">
+                        [긴급] 내일 준비물 변경! 우산 및 얇은 외투 지참 (09/25)
+                    </li>
+                    <li class="p-3 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg">
+                        다음 주 학급회의 안건 제출 기한 안내 (9/27 마감)
+                    </li>
+                    <li class="p-3 bg-gray-50 text-gray-700 border border-gray-200 rounded-lg">
+                        2학기 시간표 최종 확정 버전 공유
+                    </li>
+                    <li class="p-3 bg-gray-50 text-gray-700 border border-gray-200 rounded-lg">
+                        학급 문고 도서 대출 현황 확인
+                    </li>
+                </ul>
+                <div class="mt-4 text-right">
+                    <a href="#" class="text-sm font-medium text-primary-mint hover:underline">전체 공지 보기 &rarr;</a>
+                </div>
+            </section>
+
+            <!-- 2-2. 빠른 바로가기 (우측 상단) -->
+            <div class="lg:col-span-1 grid grid-cols-2 lg:grid-cols-1 gap-4">
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col items-center text-center">
+                    <!-- Icon: Calendar Check -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 text-primary-mint group-hover:text-secondary-green mb-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M12 16l2-2 4 4"/></svg>
+                    <span class="font-semibold text-lg">주요 일정</span>
+                    <span class="text-xs text-gray-500">시험, 행사 달력</span>
+                </a>
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col items-center text-center">
+                    <!-- Icon: Users -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 text-primary-mint group-hover:text-secondary-green mb-2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span class="font-semibold text-lg">우리반 소개</span>
+                    <span class="text-xs text-gray-500">학생, 선생님 정보</span>
+                </a>
+            </div>
+
+            <!-- 2-3. 활동 사진 섹션 -->
+            <section id="gallery" class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg border-t-4 border-yellow-500">
+                <h2 class="flex items-center text-2xl font-bold mb-4 text-gray-800">
+                    <!-- Icon: Camera -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2 text-yellow-600"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                    즐거운 활동 사진
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Placeholder 1 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://placehold.co/400x300/e0e0e0/505050?text=체육대회" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e0e0e0/505050?text=체육대회';" alt="체육대회 사진" class="w-full h-32 md:h-40 object-cover">
+                        <p class="p-2 text-sm text-center font-medium text-gray-600">체육대회 단체 사진</p>
+                    </div>
+                    <!-- Placeholder 2 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://placehold.co/400x300/d1f7e0/10b981?text=현장학습" onerror="this.onerror=null; this.src='https://placehold.co/400x300/d1f7e0/10b981?text=현장학습';" alt="현장학습 사진" class="w-full h-32 md:h-40 object-cover">
+                        <p class="p-2 text-sm text-center font-medium text-gray-600">교외 현장 학습</p>
+                    </div>
+                    <!-- Placeholder 3 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://placehold.co/400x300/fecaca/dc2626?text=급식시간" onerror="this.onerror=null; this.src='https://placehold.co/400x300/fecaca/dc2626?text=급식시간';" alt="급식시간 사진" class="w-full h-32 md:h-40 object-cover">
+                        <p class="p-2 text-sm text-center font-medium text-gray-600">즐거운 급식 시간</p>
+                    </div>
+                    <!-- Placeholder 4 -->
+                    <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+                        <img src="https://placehold.co/400x300/c7d2fe/4f46e5?text=스터디" onerror="this.onerror=null; this.src='https://placehold.co/400x300/c7d2fe/4f46e5?text=스터디';" alt="스터디 그룹 사진" class="w-full h-32 md:h-40 object-cover">
+                        <p class="p-2 text-sm text-center font-medium text-gray-600">스터디 그룹</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2-4. 학습 자료 섹션 -->
+            <section id="resource" class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
+                <h2 class="flex items-center text-2xl font-bold mb-4 text-gray-800">
+                    <!-- Icon: Book Open -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2 text-blue-600"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 0 3-3h7z"/></svg>
+                    학습 자료 및 파일
+                </h2>
+                <div class="space-y-3">
+                    <a href="#" class="flex items-center justify-between p-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-150">
+                        <div class="flex items-center">
+                            <span class="text-indigo-600 mr-3">📄</span>
+                            <span class="font-medium">수학 1단원 핵심 개념 정리 (PDF)</span>
+                        </div>
+                        <span class="text-sm text-indigo-500">다운로드</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-150">
+                        <div class="flex items-center">
+                            <span class="text-indigo-600 mr-3">📝</span>
+                            <span class="font-medium">국어 발표 PPT 자료 (PPTX)</span>
+                        </div>
+                        <span class="text-sm text-indigo-500">다운로드</span>
+                    </a>
+                    <a href="#" class="flex items-center justify-between p-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition duration-150">
+                        <div class="flex items-center">
+                            <span class="text-indigo-600 mr-3">🔗</span>
+                            <span class="font-medium">선생님 추천 외부 학습 사이트 링크 모음</span>
+                        </div>
+                        <span class="text-sm text-indigo-500">바로가기</span>
+                    </a>
+                </div>
+            </section>
+            
+            <!-- 2-5. 자유 게시판 섹션 (실제 기능은 미구현) -->
+            <section id="board" class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg border-t-4 border-purple-500">
+                <h2 class="flex items-center text-2xl font-bold mb-4 text-gray-800">
+                    <!-- Icon: Message Circle -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-2 text-purple-600"><path d="M7.9 20A9.3 9.3 0 0 1 4 16c0-4.4 3.6-8 8-8s8 3.6 8 8a9.3 9.3 0 0 1-3.9 4H7.9Z"/></svg>
+                    자유 게시판 (아이디어 나누기)
+                </h2>
+                <p class="text-gray-600 mb-4">
+                    학급 활동 아이디어, 궁금한 점, 친구에게 하고 싶은 말을 자유롭게 나눠보세요. (⚠️ 실제 게시판 기능(글쓰기/저장)은 **JavaScript와 Firebase/서버**를 연동해야 합니다.)
+                </p>
+                <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                    <p class="font-medium text-purple-700">최근 글 목록 예시:</p>
+                    <ul class="list-disc list-inside text-gray-600 ml-2 mt-2 space-y-1">
+                        <li>다음 환경 캠페인 주제는 무엇으로 할까요?</li>
+                        <li>수학 숙제 12번 문제 아는 사람?</li>
+                        <li>우리 반의 자랑거리를 공유해요!</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 3. 푸터 영역 -->
+    <footer class="bg-gray-800 text-white mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm mb-2">&copy; 2025 [학년]학년 [반]반. 함께 만들어가는 학급 공유 공간</p>
+            <p class="text-xs text-gray-400">문의: 담임 선생님 이메일 또는 연락처</p>
+        </div>
+    </footer>
+
+</body>
+</html>
